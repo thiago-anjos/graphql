@@ -5,6 +5,9 @@ const server = new ApolloServer({
     type Query {
       hello: String
       hi: String
+      id: ID
+      married: Boolean!
+      cars: [String]
     }
   `,
   resolvers: {
@@ -14,6 +17,15 @@ const server = new ApolloServer({
       },
       hi: () => {
         return 'olá amigo';
+      },
+      id: () => {
+        return 1;
+      },
+      married: () => {
+        return true;
+      },
+      cars: () => {
+        return ['ford', 'honda'];
       },
     },
   },
