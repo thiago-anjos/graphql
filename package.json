@@ -4,7 +4,8 @@
   "description": "��#\u0000 \u0000g\u0000r\u0000a\u0000p\u0000h\u0000q\u0000l\u0000\r\u0000 \u0000",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon -r sucrase/register src/index.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,8 @@
     "eslint": "^8.38.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.7"
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.7",
+    "sucrase": "^3.32.0"
   }
 }
