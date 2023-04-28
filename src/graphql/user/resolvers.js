@@ -16,9 +16,3 @@ export const userResolvers = {
     users,
   },
 };
-
-// query get_users {
-//   users(input:{_sort: "userName"}) {
-//     userName
-//   }
-// }
