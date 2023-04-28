@@ -1,5 +1,6 @@
-const users = async (_, __, context) => {
-  const users = await context.getUsers();
+const users = async (_, { input }, context) => {
+  const apiFiltersInput = new URLSearchParams(input);
+  const users = await context.getUsers('/?' + apiFiltersInput);
   return users.json();
 };
 
@@ -15,3 +16,9 @@ export const userResolvers = {
     users,
   },
 };
+
+// query get_users {
+//   users(input:{_sort: "userName"}) {
+//     userName
+//   }
+// }

@@ -1,5 +1,8 @@
-const posts = async (_, __, { getPosts }) => {
-  const response = await getPosts();
+const posts = async (_, { input }, { getPosts }) => {
+  console.log(input);
+  const apiFiltersInput = new URLSearchParams(input);
+  console.log(apiFiltersInput);
+  const response = await getPosts('/?' + apiFiltersInput);
   const posts = response.json();
   return posts;
 };
@@ -23,3 +26,12 @@ export const postResolver = {
     },
   },
 };
+
+// consulta no studio apollograph referente ao apiFiltersInput que agora é enviado para compor a url
+
+// query get_posts{
+//   posts(input:{_order: "desc", _sort: "indexRef"}) {
+//     title
+//     indexRef
+//   }
+// }
