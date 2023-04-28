@@ -15,4 +15,11 @@ export const postResolver = {
     post,
     posts,
   },
+  Post: {
+    unixTimeStampExample: ({ createdAt, id }) => {
+      const timeStamp = new Date(createdAt).getTime() / 1000; // divide por 1000 para pegar o valor em segundos, já que o gettime é em milisegundos
+      console.log(`Fui chamado para o post ${id}`);
+      return Math.floor(timeStamp);
+    },
+  },
 };
