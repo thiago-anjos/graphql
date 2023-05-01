@@ -1,7 +1,5 @@
 const posts = async (_, { input }, { getPosts }) => {
-  console.log(input);
   const apiFiltersInput = new URLSearchParams(input);
-  console.log(apiFiltersInput);
   const response = await getPosts('/?' + apiFiltersInput);
   const posts = response.json();
   return posts;
@@ -21,9 +19,8 @@ const post = async (_, { id }, { getPosts }) => {
   return post;
 };
 
-const user = async ({ userId }, _, { getUsers }) => {
-  const response = await getUsers(`/${userId}`);
-  return response.json();
+const user = async ({ userId }, _, { userDataLoader }) => {
+  return userDataLoader.load(userId);
 };
 
 export const postResolver = {
