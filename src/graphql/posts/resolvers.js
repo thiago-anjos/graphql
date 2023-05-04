@@ -1,22 +1,11 @@
-const posts = async (_, { input }, { getPosts }) => {
-  const apiFiltersInput = new URLSearchParams(input);
-  const response = await getPosts('/?' + apiFiltersInput);
-  const posts = response.json();
-  return posts;
+const post = async (_, { id }, { dataSources }) => {
+  const post = dataSources.postApi.getPost(id);
+  return post;
 };
 
-const post = async (_, { id }, { getPosts }) => {
-  const response = await getPosts('/' + id);
-  const post = await response.json();
-
-  if (typeof post.id === 'undefined') {
-    return {
-      statusCode: 404,
-      message: 'Post not Found',
-    };
-  }
-
-  return post;
+const posts = async (_, { input }, { dataSources }) => {
+  const posts = dataSources.postApi.getPosts(input);
+  return posts;
 };
 
 const user = async ({ userId }, _, { userDataLoader }) => {
